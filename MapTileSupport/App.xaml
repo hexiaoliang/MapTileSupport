@@ -1,0 +1,23 @@
+﻿<Application x:Class="MapTileSupport.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MapTileSupport"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Templet/ColorStyle.xaml"/>
+                <ResourceDictionary Source="Templet/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Templet/ComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="Templet/ListViewStyle.xaml"/>
+                <ResourceDictionary Source="Templet/PageStyle.xaml"/>
+                <ResourceDictionary Source="Templet/ScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="Templet/TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="Templet/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="Templet/WindowsStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

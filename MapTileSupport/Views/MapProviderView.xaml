@@ -1,0 +1,21 @@
+﻿<Page x:Class="MapTileSupport.Views.MapProviderView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MapTileSupport.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="MapProviderView">
+
+    <StackPanel Orientation="Vertical">
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}" Margin="0, 30">OpenStreetMap</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}">谷歌中国</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}" Margin="0, 30">百度地图</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}">高德地图</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}" Margin="0, 30">腾讯地图</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}">搜狗地图</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}" Margin="0, 30">天地图</Button>
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}">天地图标注</Button>
+    </StackPanel>
+</Page>

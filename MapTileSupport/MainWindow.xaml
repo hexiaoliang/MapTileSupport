@@ -1,0 +1,173 @@
+﻿<Window x:Class="MapTileSupport.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MapTileSupport"
+        xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        mc:Ignorable="d"
+        Title="Map Tile Support" Icon="Resource/logo-128.ico"
+        Style="{StaticResource NoBorderWindowsStyle}" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" >
+
+    <Grid Background="{StaticResource 30%_DarkBlue}">
+        <Grid Margin="1" Background="{StaticResource 10%_Black}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="270"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Name="Title" Grid.ColumnSpan="3" Background="{StaticResource 10%_Black}" MouseMove="Title_MouseMove">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="96"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource BarTextBlockStyle}" FontSize="16" Text="&#xF229;" Foreground="{StaticResource 60%_Black}" Margin="10, 0, 0, 0" />
+                    <TextBlock Style="{StaticResource NormalTextBlockStyle}" Text="Map Tile Support" Margin="10, 0, 0, 0" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="32"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_title}" Name="btn_Minimize" Click="btn_Minimize_Click">
+                            <TextBlock Style="{DynamicResource BarTextBlockStyle}" FontSize="16" Text="&#xF2F4;" Foreground="{StaticResource 60%_Black}" />
+                        </Button>
+                        <Button Grid.Column="1" Style="{StaticResource NoMouseOverButtonStyle_title}" Name="btn_Maximize" Click="btn_Maximize_Click">
+                            <TextBlock Style="{StaticResource BarTextBlockStyle}" FontSize="16" Text="&#xF372;" Foreground="{StaticResource 60%_Black}" />
+                        </Button>
+                        <Button Grid.Column="2" Style="{StaticResource NoMouseOverButtonStyle_title}" Name="btn_Exit" Click="btn_Exit_Click">
+                            <TextBlock Style="{StaticResource BarTextBlockStyle}" FontSize="16" Text="&#xF2D7;" Foreground="{StaticResource 60%_Black}" />
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="3" Background="{StaticResource 30%_DarkBlue}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical">
+                    <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Height="49.5" Width="50" Name="btn_Menu" Click="btn_Menu_Click">
+                        <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF394;" />
+                    </Button>
+                    <Line Stroke="{StaticResource 30%_DarkBlue}" StrokeThickness="0.5" X1="0" X2="50"/>
+                </StackPanel>
+                <TextBlock Name="txb_Navigate" Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Foreground="{StaticResource 00%_Black}"  FontSize="20" Margin="20, 0, 0, 0"></TextBlock>
+            </Grid>
+
+            <Rectangle Grid.Row="2" Width="50" Fill="{StaticResource 100%_Black}" />
+
+            <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" TextAlignment="Center" Text="Map Tile Loading ..." Style="{StaticResource NormalTextBlockStyle}" FontSize="64" />
+            <Frame Name="mapWrapper" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
+
+            <Frame Name="asideWrapper" Grid.Column="1" Grid.Row="2" Width="0" HorizontalAlignment="Left" NavigationUIVisibility="Hidden" Background="{StaticResource 80%_Black}" />
+
+            <Grid Name="asideMenu" Grid.Row="2" Background="{StaticResource 100%_Black}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical">
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_Searching" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF21F;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="搜索" />
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_MapProvider" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF44A;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="地图提供商" />
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_Drawing" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF41D;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="范围框选" />
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_Region" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF425;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="政区边界" />
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_TileDownloader" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF103;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="切片下载" />
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_TileMerger" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF441;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="拼接切片" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Bottom" Height="120">
+                        <Line Name="line_split" Stroke="{StaticResource 30%_DarkBlue}" StrokeThickness="0.5" X1="0" X2="50"/>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_Setting" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF43D;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="设置" />
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource NoMouseOverButtonStyle_bar}" Name="btn_Account" Click="btn_Ribbon_Click">
+                            <Grid Width="320">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource BarTextBlockStyle}" Text="&#xF41A;"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource PromptTextBlockStyle}" Text="账户" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

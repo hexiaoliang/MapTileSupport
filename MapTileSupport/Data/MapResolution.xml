@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<MapResolution>
+  <MapProvider name="TianMap">
+    <Level name="01">
+      <Resolution content="0.70312500015485435"/>
+    </Level>
+    <Level name="02">
+      <Resolution content="0.35156250007742718"/>
+    </Level>
+    <Level name="03">
+      <Resolution content="0.17578125003871359"/>
+    </Level>
+    <Level name="04">
+      <Resolution content="0.0878906250193568"/>
+    </Level>
+    <Level name="05">
+      <Resolution content="0.0439453125096784"/>
+    </Level>
+    <Level name="06">
+      <Resolution content="0.0219726562548392"/>
+    </Level>
+    <Level name="07">
+      <Resolution content="0.0109863281274196"/>
+    </Level>
+    <Level name="08">
+      <Resolution content="0.0054931640637098"/>
+    </Level>
+    <Level name="09">
+      <Resolution content="0.0027465820318549957"/>
+    </Level>
+    <Level name="10">
+      <Resolution content="0.0013732910159274978"/>
+    </Level>
+    <Level name="11">
+      <Resolution content="0.00068664549607834132"/>
+    </Level>
+    <Level name="12">
+      <Resolution content="0.00034332275992416907"/>
+    </Level>
+    <Level name="13">
+      <Resolution content="0.00017166136807812298"/>
+    </Level>
+    <Level name="14">
+      <Resolution content="8.5830684039061379E-05"/>
+    </Level>
+    <Level name="15">
+      <Resolution content="4.2915342019530649E-05"/>
+    </Level>
+    <Level name="16">
+      <Resolution content="2.1457682893727977E-05"/>
+    </Level>
+    <Level name="17">
+      <Resolution content="1.0728841446864E-05"/>
+    </Level>
+    <Level name="18">
+      <Resolution content="5.3644207234319882E-06"/>
+    </Level>
+  </MapProvider>
+  <MapProvider name="">
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+  </MapProvider>
+  <MapProvider name="">
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+  </MapProvider>
+  <MapProvider name="">
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+  </MapProvider>
+  <MapProvider name="">
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+  </MapProvider>
+  <MapProvider name="">
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+  </MapProvider>
+  <MapProvider name="">
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+    <Level name="">
+      <Resolution content=""/>
+    </Level>
+  </MapProvider>
+</MapResolution>
