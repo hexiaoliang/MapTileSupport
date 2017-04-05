@@ -10,6 +10,14 @@ namespace MapTileSupport.Services.Interfaces
 {
     interface ITileAttributeService
     {
-        List<TileAttribute> GetTileAttribute(PointLatLng topRight, PointLatLng bottomLeft, int level);
+        PointLatLng TopRight { get; set; }
+
+        PointLatLng BottomLeft { get; set; }
+
+        int Level { get; set; }
+
+        List<TileAttribute> TileAttributeCollection { get; set; }
+
+        List<TileAttribute> GetTileAttribute();
     }
 }

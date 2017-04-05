@@ -11,9 +11,15 @@ namespace MapTileSupport.Services.TileServices
 {
     class BaiduMapService : ITileAttributeService
     {
-        public List<TileAttribute> TileAttributeCollection { get; private set; }
+        public PointLatLng TopRight { get; set; }
 
-        public List<TileAttribute> GetTileAttribute(PointLatLng topRight, PointLatLng bottomLeft, int level)
+        public PointLatLng BottomLeft { get; set; }
+
+        public int Level { get; set; }
+
+        public List<TileAttribute> TileAttributeCollection { get; set; }
+
+        public List<TileAttribute> GetTileAttribute()
         {
             throw new NotImplementedException();
         }

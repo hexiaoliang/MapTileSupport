@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GMap.NET;
 using MapTileSupport.Services.Interfaces;
+using MapTileSupport.Services.Utilily;
 using System.Xml.Linq;
 using MapTileSupport.Models;
 
@@ -12,39 +13,40 @@ namespace MapTileSupport.Services.TileServices
 {
     class TianMapService : ITileAttributeService
     {
-        public List<TileAttribute> TileAttributeCollection { get; private set; }
+        public PointLatLng TopRight { get; set; }
 
-        public List<TileAttribute> GetTileAttribute(PointLatLng topRight, PointLatLng bottomLeft, int level)
+        public PointLatLng BottomLeft { get; set; }
+
+        public int Level { get; set; }
+
+        public List<TileAttribute> TileAttributeCollection { get; set; }
+
+        public TianMapService(PointLatLng topRight, PointLatLng bottomLeft, int level)
         {
-            double MapResolution = double.NaN;
+            this.TopRight = topRight;
+            this.BottomLeft = bottomLeft;
+            this.Level = level;
+        }
 
-            XElement xElement = XElement.Load(@"Data\\MapResolution.xml");
+        public List<TileAttribute> GetTileAttribute()
+        {
+            double MapResolution = CommonUtil.QueryMapResolution(this.Level);
 
-            foreach (var item in xElement.Elements("Level"))
-            {
-                if (item.Attribute("name").Value == level.ToString())
-                {
-                    MapResolution = double.Parse(item.Element("Resolution").Value);
-                    break;
-                }
-            }
+            int maxRow = Convert.ToInt32(Math.Ceiling((180.0 + this.TopRight.Lng) / MapResolution * 256.0) -1);
+            int maxColumn = Convert.ToInt32(Math.Ceiling((90 - this.TopRight.Lat) / MapResolution * 256)-1);
 
-            int maxRow = Convert.ToInt32(Math.Ceiling((180.0 + topRight.Lng) / MapResolution * 256.0) -1);
-            int maxColumn = Convert.ToInt32(Math.Ceiling((90 - topRight.Lat) / MapResolution * 256)-1);
-
-            int minRow = Convert.ToInt32(Math.Ceiling((180.0 + bottomLeft.Lng) / MapResolution * 256.0) - 1);
-            int minColumn = Convert.ToInt32(Math.Ceiling((90 - bottomLeft.Lat) / MapResolution * 256) - 1);
+            int minRow = Convert.ToInt32(Math.Ceiling((180.0 + this.BottomLeft.Lng) / MapResolution * 256.0) - 1);
+            int minColumn = Convert.ToInt32(Math.Ceiling((90 - this.BottomLeft.Lat) / MapResolution * 256) - 1);
 
             for (int i = minRow; i <= maxRow; i++)
             {
                 for (int j = minColumn; j <= maxColumn; j++)
                 {
-                    TileAttribute tileAttribute = new TileAttribute(i, j, level , "TianMap");
-                    TileAttributeCollection.Add(tileAttribute);
+                    TileAttribute tileAttribute = new TileAttribute(i, j, this.Level, "TianMap");
+                    this.TileAttributeCollection.Add(tileAttribute);
                 }
             }
-
-            return TileAttributeCollection;
+            return this.TileAttributeCollection;
         }
     }
 }

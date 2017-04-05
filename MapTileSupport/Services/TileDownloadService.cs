@@ -12,59 +12,88 @@ using System.IO;
 
 namespace MapTileSupport.Services
 {
-    class TileDownloadService : ITileDownloadService
+    public class TileDownloadService : ITileDownloadService
     {
-        public int DownloadedTileCount { get; private set; }
+        #region 事件
 
-        public string SavaPath { get; private set; }
+        public event EventHandler<DownloadedTileEventArgs> DownloadFileCompleted;
 
-        public string TileUrl { get; private set; }
+        public event EventHandler<DownloadedTileEventArgs> DownloadProgressChanged;
 
-        public List<TileAttribute> TileAttributeCollection { get; private set; }
+        #endregion
 
-        public TileDownloadService(string tileUrl, List<TileAttribute> tileAttributeCollection, string savaPath) {
+        #region 字段
 
+        private int _downloadedTileCount;
+
+        #endregion
+
+        #region 属性
+
+        public string SavaPath { get; set; }
+
+        public string TileUrl { get; set; }
+
+        public List<TileAttribute> TileAttributeCollection { get; set; }
+
+        #endregion
+
+        #region 公开方法
+
+        public TileDownloadService(string tileUrl, List<TileAttribute> tileAttributeCollection, string savaPath)
+        {
             this.TileUrl = tileUrl;
-            this.TileAttributeCollection = new List<TileAttribute>(tileAttributeCollection);
             this.SavaPath = savaPath;
+            this.TileAttributeCollection = new List<TileAttribute>(tileAttributeCollection);
         }
 
-        /// <summary>
-        ///  Thread thread = new Thread(new ThreadStart(() => TileDownload()));
-        ///  thread.Start();
-        /// </summary>
-        public void TileDownload()
+        public bool TileDownload()
         {
-            foreach (var tileAttribute in this.TileAttributeCollection)
+            try
             {
-                WebClient webClient = new WebClient();
+                foreach (var tileAttribute in this.TileAttributeCollection)
+                {
+                    WebClient webClient = new WebClient();
 
-                string clientURL = string.Format(this.TileUrl, tileAttribute.Column, tileAttribute.Row, tileAttribute.Level);
+                    string clientURL = string.Format(this.TileUrl, tileAttribute.Column, tileAttribute.Row, tileAttribute.Level);
 
-                string savePath = string.Format(@"{0}\{1}\{2}", this.SavaPath, 
-                                                "L" + string.Format("{0:d2}", tileAttribute.Level),
-                                                "R" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Row, 0x10).ToUpper()));
+                    string savePath = string.Format(@"{0}\{1}\{2}", this.SavaPath, "L" + string.Format("{0:d2}", tileAttribute.Level), "R" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Row, 0x10).ToUpper()));
 
-                if (!Directory.Exists(savePath)) Directory.CreateDirectory(savePath);
+                    if (!Directory.Exists(savePath)) Directory.CreateDirectory(savePath);
 
-                string fileName = string.Format(@"{0}\{1}.png", savePath, "C" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Column, 0x10).ToUpper()));
+                    string fileName = string.Format(@"{0}\{1}.png", savePath, "C" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Column, 0x10).ToUpper()));
 
-                webClient.DownloadFileAsync(new Uri(clientURL), fileName);
+                    webClient.DownloadFileAsync(new Uri(clientURL), fileName);
 
-                webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
+                    webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
 
-                webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
+                    webClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
-        private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        private void WebClient_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.DownloadFileCompleted?.Invoke(this, new DownloadedTileEventArgs(this._downloadedTileCount));
         }
 
-        private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.DownloadProgressChanged?.Invoke(this, new DownloadedTileEventArgs(this._downloadedTileCount));
         }
+
+        #endregion
+
+        #region 内部方法
+
+
+
+        #endregion
     }
 }

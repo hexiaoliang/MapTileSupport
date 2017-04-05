@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MapTileSupport.Models
 {
-    class TileAttribute
+    public class TileAttribute
     {
-        public int Row { get; private set; }
+        public int Row { get; set; }
 
-        public int Column { get; private set; }
+        public int Column { get; set; }
 
-        public int Level { get; private set; }
+        public int Level { get; set; }
 
-        public string Provider { get; private set; }
+        public string Provider { get; set; }
 
         public TileAttribute(int row, int column, int level, string provider) {
             this.Row = row;

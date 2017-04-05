@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MapTileSupport.Services.Interfaces
 {
-    class ILocationSeachService
+    interface ILocationSeachService
     {
     }
 }
