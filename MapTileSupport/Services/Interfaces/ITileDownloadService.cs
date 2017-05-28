@@ -9,7 +9,7 @@ namespace MapTileSupport.Services.Interfaces
 {
     interface ITileDownloadService
     {
-        string SavaPath { get; set; }
+        string SavePath { get; set; }
 
         string TileUrl { get; set; }
 

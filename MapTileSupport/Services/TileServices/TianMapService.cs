@@ -30,7 +30,7 @@ namespace MapTileSupport.Services.TileServices
 
         public List<TileAttribute> GetTileAttribute()
         {
-            double MapResolution = CommonUtil.QueryMapResolution(this.Level);
+            double MapResolution = CommonUtil.QueryMapResolution(this.Level, "..\\..\\..\\MapTileSupport\\Data\\MapResolution.xml");
 
             int maxRow = Convert.ToInt32(Math.Ceiling((180.0 + this.TopRight.Lng) / MapResolution * 256.0) -1);
             int maxColumn = Convert.ToInt32(Math.Ceiling((90 - this.TopRight.Lat) / MapResolution * 256)-1);

@@ -9,11 +9,11 @@ namespace MapTileSupport.Services.Utilily
 {
     public static class CommonUtil
     {
-        public static double QueryMapResolution(int level)
+        public static double QueryMapResolution(int level, string xmlPath)
         {
             double mapResolution = double.NaN;
 
-            XElement xElement = XElement.Load(@"Data\\MapResolution.xml");
+            XElement xElement = XElement.Load(xmlPath);
 
             foreach (var item in xElement.Elements("Level"))
             {

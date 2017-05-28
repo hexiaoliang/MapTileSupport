@@ -14,47 +14,47 @@ namespace MapTileSupport.Services
 {
     class MapLoadService : IMapLoadService
     {
-        public string MapProvider { get; private set; }
+        public EnumMapProvider MapProvider { get; set; }
 
-        public GMapControl MainMap { get; private set; }
+        private GMapControl _mainMap = new GMapControl();
 
-        public MapLoadService(string mapProvider, GMapControl mainMap) {
+        public MapLoadService(EnumMapProvider mapProvider)
+        {
             this.MapProvider = mapProvider;
-            this.MainMap = mainMap;
         }
 
         public GMapControl MapLoad()
         {
-            if (this.MapProvider== "BaiduMapService")
+            switch (this.MapProvider)
             {
-                MainMap.MapProvider = GMapProviders.GoogleChinaMap;
+                case EnumMapProvider.OpenStreetMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                case EnumMapProvider.GoogleChinaMap:
+                    this._mainMap.MapProvider = GMapProviders.GoogleChinaMap;
+                    break;
+                case EnumMapProvider.BaiduMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                case EnumMapProvider.GaodeMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                case EnumMapProvider.TencentMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                case EnumMapProvider.SougouMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                case EnumMapProvider.TianMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                case EnumMapProvider.TianLabelMap:
+                    this._mainMap.MapProvider = GMapProviders.OpenStreetMap;
+                    break;
+                default:
+                    break;
             }
-            else if (this.MapProvider == "GaodeMapService")
-            {
-                MainMap.MapProvider = GMapProviders.GoogleChinaMap;
-            }
-            else if (this.MapProvider == "GoogleMapService")
-            {
-                MainMap.MapProvider = GMapProviders.GoogleChinaMap;
-            }
-            else if (this.MapProvider == "OSMapService")
-            {
-                MainMap.MapProvider = GMapProviders.OpenStreetMap;
-            }
-            else if (this.MapProvider == "SougouMapService")
-            {
-                MainMap.MapProvider = GMapProviders.GoogleChinaMap;
-            }
-            else if (this.MapProvider == "TencentMapService")
-            {
-                MainMap.MapProvider = GMapProviders.GoogleChinaMap;
-            }
-            else if (this.MapProvider == "TianMapService")
-            {
-                MainMap.MapProvider = GMapProviders.GoogleChinaMap;
-            }
-
-            return this.MainMap;
+            return this._mainMap;
         }
     }
 }

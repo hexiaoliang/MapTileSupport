@@ -40,7 +40,7 @@ namespace MapTileSupport.Views
         private void InitMapControl()
         {
 
-            MainMap.CacheLocation = @"..//..//..//MapCache/";
+            MainMap.CacheLocation = "..\\..\\..\\MapCache\\";
 
             //MainMap.MapProvider = GMapProviders.OpenStreetMap;
             MainMap.MapProvider = GMapProviders.GoogleChinaMap;

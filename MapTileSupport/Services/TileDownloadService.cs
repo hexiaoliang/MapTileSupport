@@ -30,7 +30,7 @@ namespace MapTileSupport.Services
 
         #region 属性
 
-        public string SavaPath { get; set; }
+        public string SavePath { get; set; }
 
         public string TileUrl { get; set; }
 
@@ -40,10 +40,10 @@ namespace MapTileSupport.Services
 
         #region 公开方法
 
-        public TileDownloadService(string tileUrl, List<TileAttribute> tileAttributeCollection, string savaPath)
+        public TileDownloadService(string tileUrl, List<TileAttribute> tileAttributeCollection, string savePath)
         {
             this.TileUrl = tileUrl;
-            this.SavaPath = savaPath;
+            this.SavePath = savePath;
             this.TileAttributeCollection = new List<TileAttribute>(tileAttributeCollection);
         }
 
@@ -51,19 +51,25 @@ namespace MapTileSupport.Services
         {
             try
             {
+                WebClient webClient = new WebClient();
+
+                string clientURL = string.Empty;
+
+                string filePath = string.Empty;
+
+                string fullName = string.Empty;
+
                 foreach (var tileAttribute in this.TileAttributeCollection)
                 {
-                    WebClient webClient = new WebClient();
+                    clientURL = string.Format(this.TileUrl, tileAttribute.Column, tileAttribute.Row, tileAttribute.Level);
 
-                    string clientURL = string.Format(this.TileUrl, tileAttribute.Column, tileAttribute.Row, tileAttribute.Level);
+                    filePath = string.Format("{0}\\{1}\\{2}", this.SavePath, "L" + string.Format("{0:d2}", tileAttribute.Level), "R" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Row, 0x10).ToUpper()));
 
-                    string savePath = string.Format(@"{0}\{1}\{2}", this.SavaPath, "L" + string.Format("{0:d2}", tileAttribute.Level), "R" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Row, 0x10).ToUpper()));
+                    if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
 
-                    if (!Directory.Exists(savePath)) Directory.CreateDirectory(savePath);
+                    fullName = string.Format("{0}\\{1}.png", filePath, "C" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Column, 0x10).ToUpper()));
 
-                    string fileName = string.Format(@"{0}\{1}.png", savePath, "C" + string.Format("{0:d8}", Convert.ToString((long)tileAttribute.Column, 0x10).ToUpper()));
-
-                    webClient.DownloadFileAsync(new Uri(clientURL), fileName);
+                    webClient.DownloadFileAsync(new Uri(clientURL), fullName);
 
                     webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
 
